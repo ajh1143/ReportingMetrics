@@ -2,6 +2,7 @@ import sklearn.metrics
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix , classification_report
 
+
 def MeanAbsErr(y_test, y_pred):
     """
     Calculates and prints Mean Absolute Error
@@ -12,6 +13,7 @@ def MeanAbsErr(y_test, y_pred):
     mean_err = metrics.mean_absolute_error(y_test, y_pred)
     print('Mean Absolute Error: {}'.format(round(mean_err), 3))
 
+    
 def MeanSqErr(y_test, y_pred):
     """
     Calculates and prints Mean Squared Error
@@ -22,6 +24,7 @@ def MeanSqErr(y_test, y_pred):
     SqErr = metrics.mean_squared_error(y_test, y_pred)
     print('Mean Squared Error: {}'.format(round(SqErr), 3))
 
+    
 def DTCScore(X, y, dtc):
     """
     Calculates and prints model score
@@ -33,6 +36,7 @@ def DTCScore(X, y, dtc):
     score = dtc.score(X, y, sample_weight=None)
     print('Score: {}'.format(round(score)))
     
+    
 def feature_finder(df, model):
     """
     Calculates and prints feature importance
@@ -43,6 +47,24 @@ def feature_finder(df, model):
     features = dict(zip(df.columns, model.feature_importances_))
     print(features)
 
+def tree_viz(dtc, df, col_names, class_names, title):
+    """
+    Generates a tree graph visualization
+    :args: 
+           dtc - decision tree instance
+           df - dataframe of dataset
+           col_names - list of column names
+           class_names - list of classification names
+           title - name of graph dataset
+    :return none:
+    """
+    class_n = class_names
+    dot = tree.export_graphviz(dtc, out_file=None, feature_names=col_names, class_names=class_n, filled=True, rounded=True, special_characters=True)
+    graph = graphviz.Source(dot)
+    graph.format = 'png'
+    graph.render(title, view=True)
+    
+    
 def MetricReport(df, X, y, y_test, y_pred, dtc, model):
     """
     Compiles a report of performance metrics
