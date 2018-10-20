@@ -1,4 +1,8 @@
+import graphviz
 import sklearn.metrics
+import matplotlib.pyplot as plt
+from sklearn import tree, metrics
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix , classification_report
 
@@ -24,7 +28,7 @@ def MeanSqErr(y_test, y_pred):
     SqErr = metrics.mean_squared_error(y_test, y_pred)
     print('Mean Squared Error: {}'.format(round(SqErr), 3))
 
-    
+
 def DTCScore(X, y, dtc):
     """
     Calculates and prints model score
@@ -35,8 +39,8 @@ def DTCScore(X, y, dtc):
     """
     score = dtc.score(X, y, sample_weight=None)
     print('Score: {}'.format(round(score)))
-    
-    
+
+
 def feature_finder(df, model):
     """
     Calculates and prints feature importance
@@ -47,6 +51,7 @@ def feature_finder(df, model):
     features = dict(zip(df.columns, model.feature_importances_))
     print(features)
 
+    
 def tree_viz(dtc, df, col_names, class_names, title):
     """
     Generates a tree graph visualization
@@ -63,8 +68,8 @@ def tree_viz(dtc, df, col_names, class_names, title):
     graph = graphviz.Source(dot)
     graph.format = 'png'
     graph.render(title, view=True)
-    
-    
+
+
 def MetricReport(df, X, y, y_test, y_pred, dtc, model):
     """
     Compiles a report of performance metrics
