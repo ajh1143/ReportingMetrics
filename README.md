@@ -1,12 +1,19 @@
 # Model Reporting Metrics
 Shortcuts for automating reports about model performance
 
+
 ## Modules
-```Python3
+```Python
+import graphviz
 import sklearn.metrics
+import matplotlib.pyplot as plt
+from sklearn import tree, metrics
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import confusion_matrix , classification_report
 ```
+
+
 ## Mean Absolute Error
 ```Python3
 def MeanAbsErr(y_test, y_pred):
@@ -19,6 +26,8 @@ def MeanAbsErr(y_test, y_pred):
     mean_err = metrics.mean_absolute_error(y_test, y_pred)
     print('Mean Absolute Error: {}'.format(round(mean_err), 3))
 ```
+
+
 ## Mean Squared Error
 ```Python3
 def MeanSqErr(y_test, y_pred):
@@ -31,6 +40,8 @@ def MeanSqErr(y_test, y_pred):
     SqErr = metrics.mean_squared_error(y_test, y_pred)
     print('Mean Squared Error: {}'.format(round(SqErr), 3))
 ```
+
+
 ## Model Score (Decision Tree Classification)
 ```Python3
 def DTCScore(X, y, dtc):
@@ -44,6 +55,7 @@ def DTCScore(X, y, dtc):
     score = dtc.score(X, y, sample_weight=None)
     print('Score: {}'.format(round(score)))
 ```
+
 
 ## Feature Finder
 ```Python3
@@ -78,6 +90,7 @@ def tree_viz(dtc, df, col_names, class_names, title):
     graph.format = 'png'
     graph.render(title, view=True)
 ```
+
 
 ## Report Generator
 ```Python3
