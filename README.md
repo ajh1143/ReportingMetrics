@@ -14,7 +14,8 @@ from sklearn.metrics import confusion_matrix , classification_report
 ```
 
 
-## Mean Absolute Error
+## Mean Absolute Error    
+Calculates the *MAE*, prints in the form: `Mean Absolute Error: 0.123`    
 ```Python3
 def MeanAbsErr(y_test, y_pred):
     """
@@ -28,7 +29,8 @@ def MeanAbsErr(y_test, y_pred):
 ```
 
 
-## Mean Squared Error
+## Mean Squared Error    
+Calculates the *MSE*, prints in the form `Mean Squared Error: 0.123`    
 ```Python3
 def MeanSqErr(y_test, y_pred):
     """
@@ -42,7 +44,8 @@ def MeanSqErr(y_test, y_pred):
 ```
 
 
-## Model Score (Decision Tree Classification)
+## Model Score (Decision Tree Classification)    
+Calculates *Accuracy Score*, prints in the form `Score: 0.1`    
 ```Python3
 def DTCScore(X, y, dtc):
     """
@@ -57,7 +60,8 @@ def DTCScore(X, y, dtc):
 ```
 
 
-## Feature Finder
+## Feature Finder    
+Calculates the importance of features in the model, in the form `{'Feature_1': 0.1, 'Feature_2': 0.2, 'Feature_3': 0.3}`    
 ```Python3
 def feature_finder(df, model):
     """
@@ -71,7 +75,9 @@ def feature_finder(df, model):
 ```
 
 
-## Tree Graph Visualization
+## Tree Graph Visualization    
+Creates a visualization of the decision tree, in the form of nodes and branches with attributes tested, classes etc.    
+
 ```Python3
 def tree_viz(dtc, df, col_names, class_names, title):
     """
@@ -92,7 +98,9 @@ def tree_viz(dtc, df, col_names, class_names, title):
 ```
 
 
-## Report Generator
+## Report Generator    
+Creates a report of metrics, prints line-by-line results
+
 ```Python3
 def MetricReport(df, X, y, y_test, y_pred, dtc, model):
     """
