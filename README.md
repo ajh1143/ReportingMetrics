@@ -74,6 +74,23 @@ def feature_finder(df, model):
     print(features)
 ```
 
+## Plot Feature Weights
+```Python3
+def plot_features(feature_dict):
+    '''
+    :param feature_dict: Dictionary of feature weights in k,v pairs
+    :retur: None, Displays bar plot of features and model weights
+    '''
+    feature_dict = dict((k, v) for k, v in feature_dict.items() if v >= 0.01)
+    names = list(feature_dict.keys())
+    values = list(feature_dict.values())
+    values = values
+    plt.bar(names, values)
+    plt.xlabel('Categories')
+    plt.ylabel('Percentage\n(%)')
+    plt.title('Feature Weight')
+    plt.show()
+```
 
 ## Tree Graph Visualization    
 Creates a visualization of the decision tree, in the form of nodes and branches with attributes tested, classes etc.    
